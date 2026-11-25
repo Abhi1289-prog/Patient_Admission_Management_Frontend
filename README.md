@@ -1,16 +1,24 @@
-# React + Vite
+# Patient Admission Management App – Backend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+REST API for managing hospital patient admissions, ward/department/doctor assignments, search, filtering, and discharges.
 
-Currently, two official plugins are available:
+## Live Links
+- **Live Frontend App:** `<YOUR_VERCEL_OR_NETLIFY_URL>`
+- **Live Backend API:** `<YOUR_RENDER_URL>/api/patients`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> **Note:** The backend is hosted on Render's free tier, so the first request after inactivity may take ~30–50 seconds to wake up.
 
-## React Compiler
+## Tech Stack
+- **Language & Framework:** Java 21, Spring Boot 3
+- **Web & Validation:** Spring Web, Spring Boot Starter Validation (`jakarta.validation`)
+- **Data Access:** Spring Data JPA (Hibernate, `JpaSpecificationExecutor`, `@EntityGraph`)
+- **Database:** PostgreSQL (Supabase)
+- **Containerization:** Docker (Multi-stage build)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Project Structure (Package-by-Feature)
+```text
+src/main/java/com/dscribe/admission/
+├── config/          # CORS configuration
+├── exception/       # GlobalExceptionHandler & custom exceptions
+├── lookup/          # Ward, Department, Doctor master tables, Enums & DataSeeder
+└── patient/         # Patient entity, DTOs, Specifications, Repository, Service & Controller
